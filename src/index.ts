@@ -1,6 +1,10 @@
 import express, {Request, Response} from 'express';
+import bodyParser from 'body-parser';
 
 const app = express();
+var jsonParser = bodyParser.json()
+// var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 const port = process.env.SERVER_PORT || 3000;
 
 const products = [
@@ -257,8 +261,7 @@ app.get("/", (req: Request, res: Response) => {
     res.send("Hello Backend!");
 })
 
-app.get("/auth/login", (req: Request, res: Response) => {
-    
+app.post("/auth/login", jsonParser,(req: Request, res: Response) => {
     if (req.body.username === "mor_2314" && req.body.password==="83r5^_") {
         res.status(200).json({
                 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInVzZXIiOiJtb3JfMjMxNCIsImlhdCI6MTcwMDExODUxOX0.qxl_vmq5LIACcBDT9QBsJz0jHpRnEF_hWuqqR56A86I"
