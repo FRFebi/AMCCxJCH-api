@@ -291,7 +291,7 @@ app.get("/products/:id", (req: Request, res: Response) => {
     }
 })
 
-app.get("/products/categories/:category", (req: Request, res: Response) => {
+app.get("/products/category/:category", (req: Request, res: Response) => {
     const product = products.filter((p) => p.category === req.params.category)
     if(product){
         res.status(200).json(product);
