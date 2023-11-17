@@ -285,18 +285,18 @@ app.get("/products/:id", (req: Request, res: Response) => {
     const product = products.find((p) => p.id === parseInt(req.params.id)) 
 
     if(product){
-        res.status(400).json(product);
+        res.status(200).json(product);
     }else{
-        res.status(200).json(req.params);
+        res.status(400).json(req.params);
     }
 })
 
 app.get("/products/categories/:category", (req: Request, res: Response) => {
     const product = products.filter((p) => p.category === req.params.category)
     if(product){
-        res.status(400).json(product);
+        res.status(200).json(product);
     }else{
-        res.status(200).send("Product category not found");
+        res.status(400).send("Product category not found");
     }
 })
 
